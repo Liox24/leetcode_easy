@@ -18,24 +18,44 @@
 
 // // Second approach
 
+// var twoSum = function (nums, target) {
+//   let numToIndexMap = {};
+
+//   for (let i = 0; i < nums.length; i++) {
+//     let diff = target - nums[i];
+
+//     if (numToIndexMap.hasOwnProperty(diff)) {
+//       return [ numToIndexMap[diff],i];
+//     }
+
+//     numToIndexMap[nums[i]] = i;
+//   }
+
+//   return null;
+// };
+
+// const number = [3,2,4];
+// const target = 6;
+
+// const result = twoSum(number, target);
+// console.log(result);
+
+// another method
+
 var twoSum = function (nums, target) {
-  let numToIndexMap = {};
+  let obj = new Map();
 
   for (let i = 0; i < nums.length; i++) {
-    let diff = target - nums[i];
+    let x = target - nums[i];
 
-    if (numToIndexMap.hasOwnProperty(diff)) {
-      return [ numToIndexMap[diff],i];
-    }
-
-    numToIndexMap[nums[i]] = i;
+    if (obj.has(x)) {
+      return [obj.get(x), i];
+    } else obj.set(nums[i], i);
   }
-
-  return null;
 };
 
-const number = [3,2,4];
-const target = 6;
+const number = [6, 3, 4, 0];
+const target = 9;
 
 const result = twoSum(number, target);
 console.log(result);
